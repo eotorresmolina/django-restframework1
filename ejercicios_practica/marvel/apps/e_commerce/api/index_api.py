@@ -6,33 +6,28 @@ from rest_framework.decorators import api_view, permission_classes
 @permission_classes([])
 def hello_user(request):
 
-    if request.data.get('user_name') is None:
+    # Inicializo el nombre.
+    name = 'Django'
+
+    # Pregunto si el nombre del usuario fue pasado
+    # como parámetro a través de un POST.
+    # Usar POSTMAN para probarlo.
+    if request.data.get('user_name') != None:
+        name = request.data.get('user_name')
     
-        template = '''
-                    <html>
-                        <head>
-                            <title>Index</title>
-                        <head>
-                        <body style='background: blue'>
-                            <div style='background: darkblue'>
-                                <h1>Hello Django!</h1>
-                            <div>
-                        <body>
-                </html>
-            '''
-    else:
-        template = f'''
-                    <html>
-                        <head>
-                            <title>Index</title>
-                        <head>
-                        <body style='background: blue'>
-                            <div style='background: darkred'>
-                                <h1>Hello {request.data.get('user_name')}!</h1>
-                            <div>
-                        <body>
-                    </html>
-                '''
+    template = f'''
+                <html>
+                    <head>
+                        <title>Index</title>
+                    <head>
+                    <body style='background: blue'>
+                        <div style='background: darkblue'>
+                            <h1>Hello {name}!</h1>
+                        <div>
+                    <body>
+            </html>
+        '''
+
 
     print(template)
 
