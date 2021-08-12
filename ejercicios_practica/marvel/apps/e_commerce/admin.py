@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # NOTE: Tenemos que importar los modelos con los que vamos a trabajar:
-from e_commerce.models import *
+from apps.e_commerce.models import *
 
 # Register your models here.
 
